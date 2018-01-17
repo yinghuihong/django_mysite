@@ -77,3 +77,17 @@ different application, Django would be unable to distinguish between them.
 当同一工程下存在多个app，且都有名称为detail的path，则需通过命名空间作区分
 1.在polls/urls.py中添加app_name = 'polls'
 2.{% url 'detail' question.id%}改为{% url 'polls:detail' question.id%}
+
+==> 五、forms and generic views
+FORM HttpResponseRedirect reverse
+
+---- Use generic views: Less code is better
+1.Convert the URLconf.
+2.Delete some of the old, unneeded views.
+3.Introduce new views based on Django’s generic views.
+
+The DetailView generic view expects the primary key value captured from the URL to be called "pk",
+so we’ve changed question_id to pk for the generic views.
+
+
+
