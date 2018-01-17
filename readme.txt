@@ -65,6 +65,15 @@ from django.contrib import admin
 from .models import Question
 admin.site.register(Question)
 
+==> 四、VIEW and 模板
+使用命名空间存放模板，避免多个应用存在相同模板名的情况下，无法区分
+Django will choose the first template it finds whose name matches, and if you had a template with the same name in a
+different application, Django would be unable to distinguish between them.
 
+---- Removing hardcoded URLs in templates
+{% url 'detail' question.id%} 会采用polls/urls.py中定义的名为detail的path，当url路径更改时，不用修改模板
 
-
+---- Namespacing URL names
+当同一工程下存在多个app，且都有名称为detail的path，则需通过命名空间作区分
+1.在polls/urls.py中添加app_name = 'polls'
+2.{% url 'detail' question.id%}改为{% url 'polls:detail' question.id%}
