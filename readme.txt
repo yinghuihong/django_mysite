@@ -89,5 +89,18 @@ FORM HttpResponseRedirect reverse
 The DetailView generic view expects the primary key value captured from the URL to be called "pk",
 so we’ve changed question_id to pk for the generic views.
 
+==> 六、Tests (methods or views)
+$ python manage.py test polls # running tests
 
+What happened is this:
+
+1.python manage.py test polls looked for tests in the polls application # 运行测试
+2.it found a subclass of the django.test.TestCase class # 查找集成TestCase的子类
+3.it created a special database for the purpose of testing # 测试时，会创建特殊的数据库
+4.it looked for test methods - ones whose names begin with test # 查找test开头的函数
+5.in test_was_published_recently_with_future_question it created a Question instance whose pub_date field is 30 days in the future # 创建Question实例
+6.… and using the assertIs() method, it discovered that its was_published_recently() returns True, though we wanted it to return False # 通过断言函数做判断
+
+
+==> 七、static files management
 
