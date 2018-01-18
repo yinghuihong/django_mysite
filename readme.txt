@@ -105,4 +105,19 @@ What happened is this:
 ==> 七、static files management
 css 、images 存放路径、命名空间
 
-==> 八、
+==> 八、Customize admin site
+---- Customize the admin form
+class QuestionAdmin subclass of admin.ModelAdmin as admin.site.register(Question, QuestionAdmin) second parameter
+实现定制admin site，包括展示字段、内联模型、过滤组件、搜索组件、页码
+
+---- Customize the admin look and feel
+1.Customizing your project’s templates # override templates
+Note that any of Django’s default admin templates can be overridden. To override a template,
+just do the same thing you did with base_site.html – copy it from the default directory into your custom directory, and make changes.
+2.Customizing your application’s templates
+
+---- Customize the admin index page
+copy and modify python3.6/site-packages/django/contrib/admin/templates/admin/index.html
+
+
+
