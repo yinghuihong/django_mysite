@@ -103,4 +103,6 @@ What happened is this:
 
 
 ==> 七、static files management
+css 、images 存放路径、命名空间
 
+==> 八、
