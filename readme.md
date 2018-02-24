@@ -1,8 +1,12 @@
-==> 一、Install
-$ pip install django //安装django
-$ python -m django --version //检查django是否安装成功
+The django site Project
+================
 
-==> 二、Project apps and web server
+## 一、Install
+
+- $ pip install django //安装django
+- $ python -m django --version //检查django是否安装成功
+
+## 二、Project apps and web server
 $ django-admin startproject mysite //创建工程
 $ python manage.py runserver //运行服务，django内置轻量的Web服务器（纯python编写），仅用于开发测试时使用
 $ python manage.py startapp polls //创建app
@@ -10,11 +14,12 @@ $ python manage.py startapp polls //创建app
 2、write app URL config
 3、project URL include app URL
 
-==> 三、Database setup
+## 三、Database setup
+
 SQLite is included in Python, so you won’t need to install anything else to support your database.
 If you’re using SQLite, you don’t need to create anything beforehand - the database file will be created automatically when it is needed.
 
----- 1.INSTALLED_APPS
+- 1.INSTALLED_APPS
 Apps can be used in multiple projects, and you can package and distribute them for use by others in their projects.
 django.contrib.admin – The admin site. You’ll use it shortly.
 django.contrib.auth – An authentication system.
@@ -27,10 +32,10 @@ $ python manage.py migrate //为INSTALLED_APPS的应用创建表
 不需要的应用则从INSTALLED_APPS中注释或删掉，然后才执行migrate命令
 The migrate command will only run migrations for apps in INSTALLED_APPS.
 
----- 2.Creating models
+- 2.Creating models
 The goal is to define your data model in one place and automatically derive things from it.
 
----- 3.Activating models
+- 3.Activating models
 But first we need to tell our project that the polls app is installed.
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
@@ -47,17 +52,17 @@ $ python manage.py check
 2.Run python manage.py makemigrations to create migrations for those changes
 3.Run python manage.py migrate to apply those changes to the database.
 
----- 4.Playing with the API
+- 4.Playing with the API
 $ python manage.py shell
 https://docs.djangoproject.com/en/2.0/intro/tutorial02/#playing-with-the-api
 
----- 5.Introducing the Django Admin
+- 5.Introducing the Django Admin
 Creating an admin user
 $ python manage.py createsuperuser
 Username: admin
 Password: yinghuihong
 
----- 6.Start the development server
+- 6.Start the development server
 $ python manage.py runserver
 
 ---- 7.Make the poll app modifiable in the admin
@@ -65,23 +70,23 @@ from django.contrib import admin
 from .models import Question
 admin.site.register(Question)
 
-==> 四、VIEW and 模板
+## 四、VIEW and 模板
 使用命名空间存放模板，避免多个应用存在相同模板名的情况下，无法区分
 Django will choose the first template it finds whose name matches, and if you had a template with the same name in a
 different application, Django would be unable to distinguish between them.
 
----- Removing hardcoded URLs in templates
+- Removing hardcoded URLs in templates
 {% url 'detail' question.id%} 会采用polls/urls.py中定义的名为detail的path，当url路径更改时，不用修改模板
 
----- Namespacing URL names
+- Namespacing URL names
 当同一工程下存在多个app，且都有名称为detail的path，则需通过命名空间作区分
 1.在polls/urls.py中添加app_name = 'polls'
 2.{% url 'detail' question.id%}改为{% url 'polls:detail' question.id%}
 
-==> 五、forms and generic views
+## 五、forms and generic views
 FORM HttpResponseRedirect reverse
 
----- Use generic views: Less code is better
+- Use generic views: Less code is better
 1.Convert the URLconf.
 2.Delete some of the old, unneeded views.
 3.Introduce new views based on Django’s generic views.
@@ -89,7 +94,7 @@ FORM HttpResponseRedirect reverse
 The DetailView generic view expects the primary key value captured from the URL to be called "pk",
 so we’ve changed question_id to pk for the generic views.
 
-==> 六、Tests (methods or views)
+## 六、Tests (methods or views)
 $ python manage.py test polls # running tests
 
 What happened is this:
@@ -102,21 +107,21 @@ What happened is this:
 6.… and using the assertIs() method, it discovered that its was_published_recently() returns True, though we wanted it to return False # 通过断言函数做判断
 
 
-==> 七、static files management
+## 七、static files management
 css 、images 存放路径、命名空间
 
-==> 八、Customize admin site
----- Customize the admin form
+## 八、Customize admin site
+- Customize the admin form
 class QuestionAdmin subclass of admin.ModelAdmin as admin.site.register(Question, QuestionAdmin) second parameter
 实现定制admin site，包括展示字段、内联模型、过滤组件、搜索组件、页码
 
----- Customize the admin look and feel
+- Customize the admin look and feel
 1.Customizing your project’s templates # override templates
 Note that any of Django’s default admin templates can be overridden. To override a template,
 just do the same thing you did with base_site.html – copy it from the default directory into your custom directory, and make changes.
 2.Customizing your application’s templates
 
----- Customize the admin index page
+- Customize the admin index page
 copy and modify python3.6/site-packages/django/contrib/admin/templates/admin/index.html
 
 
