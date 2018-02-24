@@ -42,6 +42,12 @@ django.contrib.messages – A messaging framework.
 
 django.contrib.staticfiles – A framework for managing static files.
 
+$ python manage.py migrate #为INSTALLED_APPS的应用创建表
+
+不需要的应用则从INSTALLED_APPS中注释或删掉，然后才执行migrate命令
+
+The migrate command will only run migrations for apps in INSTALLED_APPS.
+
 - 2.Creating models
 
 The goal is to define your data model in one place and automatically derive things from it.
@@ -54,6 +60,22 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     ...
     ]
+
+$ python manage.py makemigrations polls #创建表迁移描述文件（polls/migrations目录下）
+
+$ python manage.py migrate #执行迁移，真正修改数据库
+
+$ python manage.py sqlmigrate polls 0001 #展示django执行的SQL语句（只展示不执行，便于理解django的操作）
+
+$ python manage.py check
+
+表模型修改三步骤：
+
+1.Change your models (in models.py).
+
+2.Run python manage.py makemigrations to create migrations for those changes
+
+3.Run python manage.py migrate to apply those changes to the database.
 
 - 4.Playing with the API
 
@@ -82,28 +104,6 @@ from django.contrib import admin
 from .models import Question
 
 admin.site.register(Question)
-
-$ python manage.py migrate #为INSTALLED_APPS的应用创建表
-
-不需要的应用则从INSTALLED_APPS中注释或删掉，然后才执行migrate命令
-
-The migrate command will only run migrations for apps in INSTALLED_APPS.
-
-$ python manage.py makemigrations polls #创建表迁移描述文件（polls/migrations目录下）
-
-$ python manage.py migrate #执行迁移，真正修改数据库
-
-$ python manage.py sqlmigrate polls 0001 #展示django执行的SQL语句（只展示不执行，便于理解django的操作）
-
-$ python manage.py check
-
-表模型修改三步骤：
-
-- 1.Change your models (in models.py).
-
-- 2.Run python manage.py makemigrations to create migrations for those changes
-
-- 3.Run python manage.py migrate to apply those changes to the database.
 
 ## 四、View and Template
 
