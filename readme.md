@@ -58,7 +58,8 @@ INSTALLED_APPS = [
 - 4.Playing with the API
 
 $ python manage.py shell
-https://docs.djangoproject.com/en/2.0/intro/tutorial02/#playing-with-the-api
+
+See https://docs.djangoproject.com/en/2.0/intro/tutorial02/#playing-with-the-api
 
 - 5.Introducing the Django Admin
 
@@ -83,7 +84,9 @@ from .models import Question
 admin.site.register(Question)
 
 $ python manage.py migrate #为INSTALLED_APPS的应用创建表
+
 不需要的应用则从INSTALLED_APPS中注释或删掉，然后才执行migrate命令
+
 The migrate command will only run migrations for apps in INSTALLED_APPS.
 
 $ python manage.py makemigrations polls #创建表迁移描述文件（polls/migrations目录下）
@@ -102,7 +105,7 @@ $ python manage.py check
 
 - 3.Run python manage.py migrate to apply those changes to the database.
 
-## 四、VIEW and 模板
+## 四、View and Template
 
 使用命名空间存放模板，避免多个应用存在相同模板名的情况下，无法区分
 
