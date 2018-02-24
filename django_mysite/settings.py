@@ -53,7 +53,7 @@ ROOT_URLCONF = 'django_mysite.urls'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#std:setting-TEMPLATES
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',   # 使用的模板引擎
         'DIRS': [os.path.join(BASE_DIR, 'templates')],  # 模板查找路径
         'APP_DIRS': True,
         # set to True, Django automatically looks for a templates/ subdirectory within each application packag

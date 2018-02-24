@@ -1,6 +1,6 @@
 # Create your views here.
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 from django.utils import timezone
@@ -74,3 +74,7 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.e
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+
+def json(request):
+    return JsonResponse({'list': 'abc'})
