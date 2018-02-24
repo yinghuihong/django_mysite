@@ -65,7 +65,7 @@ Password: yinghuihong
 - 6.Start the development server
 $ python manage.py runserver
 
----- 7.Make the poll app modifiable in the admin
+- 7.Make the poll app modifiable in the admin
 from django.contrib import admin
 from .models import Question
 admin.site.register(Question)
