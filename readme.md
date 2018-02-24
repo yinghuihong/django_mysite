@@ -135,7 +135,7 @@ FORM HttpResponseRedirect reverse
 
 3.Introduce new views based on Django’s generic views.
 
-The DetailView generic view expects the primary key value captured from the URL to be called "pk",
+- The DetailView generic view expects the primary key value captured from the URL to be called "pk",
 so we’ve changed question_id to pk for the generic views.
 
 ## 六、Tests (methods or views)
